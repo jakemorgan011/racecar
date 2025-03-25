@@ -44,14 +44,17 @@ FletchAudioProcessorEditor::FletchAudioProcessorEditor (FletchAudioProcessor& p)
     distortionSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     distortionSlider.setTextBoxStyle(juce::Slider::NoTextBox, true, 0,0);
     addAndMakeVisible(distortionSlider);
-    typeSlider.setRange(0.f,1.0f);
+    distortionSliderAttachment.reset(new juce::AudioProcessorValueTreeState::SliderAttachment(audioProcessor.getVTS(),"distortion", distortionSlider));
+    typeSlider.setRange(0.f,3.0f);
     typeSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     typeSlider.setTextBoxStyle(juce::Slider::NoTextBox, true, 0,0);
     addAndMakeVisible(typeSlider);
+    typeSliderAttachment.reset(new juce::AudioProcessorValueTreeState::SliderAttachment(audioProcessor.getVTS(),"type", typeSlider));
     dryWetSlider.setRange(0.f,1.0f);
     dryWetSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     dryWetSlider.setTextBoxStyle(juce::Slider::NoTextBox, true, 0,0);
     addAndMakeVisible(dryWetSlider);
+    dryWetSliderAttachment.reset(new juce::AudioProcessorValueTreeState::SliderAttachment(audioProcessor.getVTS(),"drywet", dryWetSlider));
     
     //
     setResizable(false, false);

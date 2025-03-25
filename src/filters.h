@@ -47,6 +47,7 @@ public:
         z2 = 0.0f;
     }
     
+    // haven't done this because i'm tired of reading documentation
     void makeLowPass(float cutoffFrequency, float gainDB, float Q = 1.0f/std::sqrt(2.0f)){
         
     }

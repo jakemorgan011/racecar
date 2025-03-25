@@ -123,7 +123,6 @@ public:
     }
     void paint(juce::Graphics& g) override {
         g.setColour(colour);
-        //g.fillRoundedRectangle(currentPos.x, currentPos.y, stretch.x, stretch.y, 20);
         g.fillRoundedRectangle(currentPos.x, currentPos.y, getWidth()/5, getHeight(), 15);
     }
     // this will get called with each timerCallback()
@@ -137,6 +136,7 @@ public:
             //currentPos = vectorAdd(currentPos,vectorMult(vectorSub(p2, currentPos),speed));
             currentPos.x = currentPos.x + speed.x;
 
+            //this stretch isn't working not sure why.
             stretch = vectorAdd(stretch,vectorMult(vectorSub(p2, stretch),speed));
         }else{
             init = false;
@@ -202,8 +202,8 @@ public:
     void scroll(){
         if(!init){
             // there is 1000% a better way to do this.
-            // here i just create a fake loop with the text lol
             if(scroll_index+SCROLL_LENGTH > text.size()){
+                // if you are reading this im sorry for this hard coded mess.
                 scroll_index = 2;
                 scrolledText = text.substr(scroll_index,SCROLL_LENGTH);
                 scroll_index++;

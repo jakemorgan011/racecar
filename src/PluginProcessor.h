@@ -9,6 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "filters.h"
 
 //==============================================================================
 /**
@@ -52,8 +53,22 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    juce::AudioProcessorValueTreeState& getVTS(){
+        return *ValueTreeState;
+    }
 
 private:
+    juce::AudioBuffer<float> wetBuff;
+    juce::AudioBuffer<float> dryBuff;
+    
+    std::atomic<float>* distortion;
+    std::atomic<float>* type;
+    std::atomic<float>* drywet;
+    std::unique_ptr<juce::AudioProcessorValueTreeState> ValueTreeState;
+    
+    termite::biquad_filter lowShelf;
+    
+    void _constructValueTreeState();
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FletchAudioProcessor)
 };

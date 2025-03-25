@@ -34,8 +34,11 @@ public:
 private:
     customLookAndFeel customLookAndFeel;
     juce::Slider distortionSlider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> distortionSliderAttachment;
     juce::Slider typeSlider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> typeSliderAttachment;
     juce::Slider dryWetSlider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> dryWetSliderAttachment;
     std::vector<juce::Colour*> colours;
     std::vector<termite::stripe*> stripes;
     timer timer;
