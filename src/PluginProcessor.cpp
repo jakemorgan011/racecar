@@ -232,7 +232,7 @@ void FletchAudioProcessor::_constructValueTreeState(){
         
         std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("distortion", 1), "distortion", juce::NormalisableRange<float>(0.0f,1.f,0.01f), 0.0f),
         
-        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("type", 1), "type", juce::NormalisableRange<float>(0.0f,3.f,1.0f), 0.5f),
+        std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("type", 1), "type", juce::NormalisableRange<float>(0.0f,3.f,1.0f), 0.f),
         
         std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("drywet",1), "drywet", juce::NormalisableRange<float>(0.0f,1.f,0.01f), 0.5f)
     }));
